@@ -1,0 +1,299 @@
+/* 优化后的CSS - 避免样式污染，使用作用域化样式 */
+
+/* 基础样式 - 使用作用域化选择器 */
+.app-body * {
+    box-sizing: border-box;
+}
+
+.app-body {
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, 微軟雅黑, Arial, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: #526484;
+    text-align: left;
+    /* background-color: #f5f6fa; */
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    
+    /* 合并主容器样式 */
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 2rem 14px;
+    
+    /* 合并主卡片样式 */
+    background: #fff;
+    /* border: 1px solid #dbdfea; */
+    /* border-radius: 4px; */
+    /* box-shadow: 6px 5px 40px rgba(30,48,75,.08); */
+    max-width: 90%;
+}
+
+
+
+@media (max-width: 575.98px) {
+    .app-body {
+        padding: 1rem 10px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .app-body {
+        max-width: 100%;
+    }
+}
+
+/* 表单字段 */
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.field-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #364a63;
+}
+
+.field-input {
+    display: block;
+    width: 100%;
+    height: calc(2.125rem + 2px);
+    padding: 0.4375rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    color: #3c4d62;
+    background-color: #fff;
+    border: 1px solid #dbdfea;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.field-input:focus {
+    border-color: #6576ff;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(101, 118, 255, 0.1);
+}
+
+.number-input {
+    text-align: center;
+}
+
+/* 开关控件 */
+.switch-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.switch-input {
+    width: 2.4rem;
+    height: 1.25rem;
+}
+
+.switch-label {
+    margin: 0;
+    font-weight: 500;
+    color: #364a63;
+}
+
+/* 操作按钮 */
+.action-button {
+    display: block;
+    width: 100%;
+    padding: 0.4375rem 1.125rem;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, 微軟雅黑, Arial, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.25rem;
+    color: #fff;
+    background-color: #1ab15c;
+    border: 1px solid #1ab15c;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(26, 177, 92, 0.3);
+    position: relative;
+    transform: translateY(0);
+    overflow: hidden;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.action-button:hover::before {
+    left: 100%;
+}
+
+.action-button:hover {
+    color: #fff !important;
+    background-color: #364a63 !important;
+    border-color: #364a63 !important;
+}
+
+.action-button:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(101, 118, 255, 0.1);
+}
+
+/* 统计网格 */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.stat-item {
+    border: 1px solid #dbdfea;
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.stat-item:hover {
+    background-color: rgba(101, 118, 255, 0.05);
+    border-color: rgba(101, 118, 255, 0.3);
+}
+
+.stat-icon {
+    width: 3.75rem;
+    height: 3.75rem;
+    float: right;
+    padding-top: 1rem;
+    color: #364a63;
+}
+
+.stat-title {
+    white-space: nowrap;
+    opacity: 0.6;
+    font-size: 0.875rem;
+    color: #526484;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    white-space: nowrap;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: #364a63;
+}
+
+.stat-item:nth-child(2) .stat-value {
+    color: #09c2de;
+}
+
+/* 响应式调整 */
+@media (max-width: 767.98px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .stat-item {
+        padding: 0.75rem 1rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    
+    .stat-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+/* 滚动条美化 - 作用域化 */
+.app-body ::-webkit-scrollbar {
+    width: .375rem;
+    height: .5rem;
+}
+
+.app-body ::-webkit-scrollbar-thumb {
+    background-color: #F38AB5;
+    border-radius: 6249.9375rem;
+}
+
+/* 选择框样式 */
+select.field-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+/* 隐藏数字输入框的上下箭头 */
+input[type="number"].field-input {
+    -moz-appearance: textfield;
+}
+
+input[type="number"].field-input::-webkit-outer-spin-button,
+input[type="number"].field-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 复选框样式 */
+.switch-input[type="checkbox"] {
+    appearance: none;
+    width: 2.4rem;
+    height: 1.25rem;
+    background-color: #dbdfea;
+    border-radius: 6249.9375rem;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.switch-input[type="checkbox"]:checked {
+    background-color: #6576ff;
+}
+
+.switch-input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.switch-input[type="checkbox"]:checked::before {
+    transform: translateX(1.15rem);
+}
+
+#showMax{
+    white-space: nowrap;
+    font-weight: 700;
+    color: #00ad23;
+}
+.width-short{
+    box-shadow: 0 4px 15px rgba(26, 177, 92, 0.3);
+    border: 1px solid #1ab15c;
+    border-radius: 8px;
+}
