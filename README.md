@@ -1,1 +1,1 @@
-![image](https://github.com/55gY/check_my_ip/blob/main/2025-11-05_11-04-19.png)
+![image](https://github.com/55gY/data_usage/blob/main/2025-11-05_11-04-19.png)
